@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aria Lawyers Management System</title>
+  <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+  <style>
+    :root { --navy: #3f5168; --gold: #c5a46d; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font: 13px 'Segoe UI', sans-serif; color: #222; }
+    header { background: var(--navy); color: #fff; padding: 10px 12px; }
+    header b { letter-spacing: 1px; } header b span { color: var(--gold); }
+    header small { display: block; opacity: .8; margin-top: 2px; }
+    main { padding: 10px 12px; }
+    #subject { font-weight: 600; margin-bottom: 8px; word-break: break-word; }
+    input[type=search], input[type=text], input[type=number], select { width: 100%; padding: 7px 8px; border: 1px solid #bbb; border-radius: 3px; font: inherit; }
+    #results { max-height: 300px; overflow-y: auto; border: 1px solid #e3e3e3; margin: 6px 0 10px; }
+    .group { background: #f3f5f8; color: #555; font-size: 11px; text-transform: uppercase; padding: 4px 8px; }
+    .matter { display: flex; gap: 8px; width: 100%; text-align: left; border: 0; border-bottom: 1px solid #f0f0f0; background: #fff; padding: 7px 8px; cursor: pointer; font: inherit; }
+    .matter:hover { background: #f5f8fc; } .matter.sel { background: #dbe8f6; }
+    .num { background: #f36f21; color: #fff; border-radius: 3px; padding: 0 5px; font-weight: 600; font-size: 12px; height: 18px; }
+    .num.lead { background: #165a5a; }
+    .t { flex: 1; } .tick { color: #107c10; font-size: 11px; white-space: nowrap; }
+    .empty { padding: 10px; color: #777; }
+    label { display: flex; gap: 6px; align-items: center; margin: 6px 0; }
+    .sub { margin-left: 22px; }
+    .row { display: flex; gap: 6px; } .row > * { flex: 1; }
+    #save { width: 100%; background: #8cc63f; border: 0; color: #fff; font-weight: 600; padding: 10px; border-radius: 3px; cursor: pointer; font-size: 14px; margin-top: 8px; }
+    #save:disabled { background: #c8c8c8; cursor: default; }
+    .status { padding: 8px; border-radius: 3px; margin: 8px 0; } .info { background: #eef3f9; } .ok { background: #dff6dd; } .error { background: #fde7e9; }
+    .linkbtn { background: none; border: 0; color: #a4262c; text-decoration: underline; cursor: pointer; padding: 0 0 8px; font: inherit; }
+    .ask { background: #fff4ce; border: 1px solid #e8c766; padding: 8px; border-radius: 3px; margin: 8px 0; }
+    .ask .row { margin-top: 8px; } .ask button { padding: 6px; border: 1px solid #999; background: #fff; border-radius: 3px; cursor: pointer; font: inherit; }
+    .ask button.yes { background: #a4262c; color: #fff; border-color: #a4262c; }
+    .folders { max-height: 170px; overflow-y: auto; border: 1px solid #ccc; border-radius: 3px; margin-top: 4px; }
+    .folder { display: block; width: 100%; text-align: left; border: 0; border-bottom: 1px solid #f2f2f2; background: #fff; padding: 5px 8px; cursor: pointer; font: inherit; }
+    .folder:hover { background: #f5f8fc; } .folder.sel { background: #dbe8f6; font-weight: 600; }
+    .docbox { border: 1px solid #e3e3e3; border-radius: 3px; padding: 8px; margin: 10px 0 4px; }
+    .docHead { display: flex; justify-content: space-between; margin-bottom: 6px; }
+    .nf { margin-top: 6px; } .nf button { flex: 0 0 auto; padding: 6px 10px; border: 1px solid #3f5168; background: #3f5168; color: #fff; border-radius: 3px; cursor: pointer; }
+    .muted { color: #777; font-size: 12px; } a { color: #2b6cb0; }
+  </style>
+</head>
+<body>
+  <header><b>ARIA <span>LAWYERS</span></b><small>Management System</small></header>
+  <main>
+    <div id="subject"></div>
+    <div id="status" class="status info" hidden></div>
+    <p id="composeHelp" class="muted" hidden>Choose the matter, then click the green button and send your email as normal. The sent email is saved to the matter automatically.</p>
+    <button id="unsave" class="linkbtn" hidden>Remove this email from the matter</button>
+    <input id="search" type="search" placeholder="Search matter number, client or other party…" autocomplete="off" />
+    <div id="results"></div>
+    <div id="ask" class="ask" hidden><div id="askText"></div><div class="row"><button id="askYes" class="yes">Yes</button><button id="askNo">Cancel</button></div></div>
+    <div class="muted">Selected: <b id="selName">—</b> <a id="openMatter" hidden target="_blank">Open matter ›</a></div>
+
+    <div id="docBox" class="docbox">
+      <div class="docHead"><b>Matter documents folder</b> <a id="openDocs" hidden target="_blank">Open folder ›</a></div>
+      <div class="muted">Chosen: <b id="folderPicked"></b></div>
+      <div id="attFolder" class="folders"></div>
+      <div class="row nf"><input id="newFolder" type="text" placeholder="New folder name (created inside the folder above)" /><button id="addFolder">Create</button></div>
+    </div>
+
+    <label><input type="checkbox" id="saveAtts" /> Also save attachments to the folder above</label>
+
+    <label><input type="checkbox" id="addTime" /> Record time for this email</label>
+    <div id="timeBox" class="sub" hidden>
+      <div class="row"><input id="units" type="number" min="1" value="1" title="Units (6 min each)" /><span class="muted" style="align-self:center">units × 6 min</span></div>
+      <input id="timeSubject" type="text" style="margin-top:6px" />
+    </div>
+
+    <button id="save" disabled>Save to matter</button>
+    <p id="done" hidden><a id="viewMatter" target="_blank">View matter ›</a></p>
+    <div id="sweep" class="status info" hidden></div>
+    <p class="muted"><a id="openApp" target="_blank">Open Aria Lawyers Management System</a></p>
+  </main>
+  <script>
+    // Show any start-up problem in the panel itself (there is no console on phones)
+    window.addEventListener('error', function (e) { var el = document.getElementById('status'); if (el) { el.hidden = false; el.className = 'status error'; el.textContent = 'Start-up error: ' + (e.message || e.error) + ' (' + (e.filename || '').split('/').pop() + ':' + e.lineno + ')'; } });
+    window.addEventListener('unhandledrejection', function (e) { var el = document.getElementById('status'); if (el) { el.hidden = false; el.className = 'status error'; el.textContent = 'Start-up error: ' + ((e.reason && e.reason.message) || e.reason); } });
+    setTimeout(function () { var el = document.getElementById('status'); if (el && !window.__ariaStarted) { el.hidden = false; el.className = 'status error'; el.textContent = 'Outlook did not start the panel (Office.onReady did not fire). Close and reopen it.'; } }, 12000);
+  </script>
+  <script src="taskpane.js?v=1794880735579"></script>
+</body>
+</html>
