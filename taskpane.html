@@ -37,6 +37,12 @@
     .folders { max-height: 170px; overflow-y: auto; border: 1px solid #ccc; border-radius: 3px; margin-top: 4px; }
     .folder { display: block; width: 100%; text-align: left; border: 0; border-bottom: 1px solid #f2f2f2; background: #fff; padding: 5px 8px; cursor: pointer; font: inherit; }
     .folder:hover { background: #f5f8fc; } .folder.sel { background: #dbe8f6; font-weight: 600; }
+    details.docbox summary { cursor: pointer; padding: 2px 0; }
+    .lbl { display: block; font-size: 12px; color: #555; margin: 6px 0 2px; }
+    textarea, select, input[type=date] { width: 100%; box-sizing: border-box; padding: 6px; border: 1px solid #bbb; border-radius: 3px; font: inherit; }
+    button.small { margin-top: 8px; padding: 7px; width: 100%; border: 0; border-radius: 3px; background: #3f5168; color: #fff; font-weight: 600; cursor: pointer; }
+    .fileRow { display: flex; gap: 6px; align-items: flex-start; padding: 4px 8px; border-bottom: 1px solid #f2f2f2; font-size: 13px; }
+    .fileRow i { color: #777; font-style: normal; margin-left: auto; white-space: nowrap; }
     .docbox { border: 1px solid #e3e3e3; border-radius: 3px; padding: 8px; margin: 10px 0 4px; }
     .docHead { display: flex; justify-content: space-between; margin-bottom: 6px; }
     .nf { margin-top: 6px; } .nf button { flex: 0 0 auto; padding: 6px 10px; border: 1px solid #3f5168; background: #3f5168; color: #fff; border-radius: 3px; cursor: pointer; }
@@ -72,6 +78,25 @@
 
     <button id="save" disabled>Save to matter</button>
     <p id="done" hidden><a id="viewMatter" target="_blank">View matter ›</a></p>
+
+    <details id="attachBox" class="docbox" hidden>
+      <summary><b>Attach from matter documents</b></summary>
+      <input id="fileSearch" type="search" placeholder="Search file names" style="margin-top:6px" />
+      <div id="fileList" class="folders"></div>
+      <button id="attachBtn" class="small">Attach to this email</button>
+    </details>
+
+    <details id="taskBox" class="docbox">
+      <summary><b>New task for this matter</b></summary>
+      <label class="lbl">Task</label><input id="taskTitle" type="text" />
+      <label class="lbl">Assign to</label><select id="taskWho"></select>
+      <div class="row">
+        <div><label class="lbl">Due date</label><input id="taskDue" type="date" /></div>
+        <div><label class="lbl">Priority</label><select id="taskPriority"><option>No Priority</option><option>Low</option><option selected>Medium</option><option>High</option></select></div>
+      </div>
+      <label class="lbl">Details</label><textarea id="taskDetails" rows="3"></textarea>
+      <button id="taskBtn" class="small">Create task</button>
+    </details>
     <div id="sweep" class="status info" hidden></div>
     <p class="muted"><a id="openApp" target="_blank">Open Aria Lawyers Management System</a></p>
   </main>
@@ -81,6 +106,6 @@
     window.addEventListener('unhandledrejection', function (e) { var el = document.getElementById('status'); if (el) { el.hidden = false; el.className = 'status error'; el.textContent = 'Start-up error: ' + ((e.reason && e.reason.message) || e.reason); } });
     setTimeout(function () { var el = document.getElementById('status'); if (el && !window.__ariaStarted) { el.hidden = false; el.className = 'status error'; el.textContent = 'Outlook did not start the panel (Office.onReady did not fire). Close and reopen it.'; } }, 12000);
   </script>
-  <script src="taskpane.js?v=1794880735579"></script>
+  <script src="taskpane.js?v=1794902057634"></script>
 </body>
 </html>
