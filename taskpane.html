@@ -7,13 +7,13 @@
   <title>Aria Lawyers Management System</title>
   <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
   <style>
-    :root { --navy: #3e2c1c; --gold: #b1976b; --brown: #3e2c1c; }
+    :root { --navy: #2e2218; --gold: #b1976b; --brown: #2e2218; }
     * { box-sizing: border-box; }
     body { margin: 0; font: 13px 'Segoe UI', sans-serif; color: #222; }
-    header { background: var(--gold); color: var(--brown); padding: 8px 12px; }
+    header { background: var(--brown); color: #fff; padding: 8px 12px; }
     header img { height: 30px; display: block; }
     header b { letter-spacing: 1px; } header b span { color: var(--gold); }
-    header small { display: block; margin-top: 2px; font-weight: 600; }
+    header small { display: block; margin-top: 2px; font-weight: 600; color: var(--gold); }
     main { padding: 10px 12px; }
     #subject { font-weight: 600; margin-bottom: 8px; word-break: break-word; }
     input[type=search], input[type=text], input[type=number], select { width: 100%; padding: 7px 8px; border: 1px solid #bbb; border-radius: 3px; font: inherit; }
@@ -28,7 +28,7 @@
     label { display: flex; gap: 6px; align-items: center; margin: 6px 0; }
     .sub { margin-left: 22px; }
     .row { display: flex; gap: 6px; } .row > * { flex: 1; }
-    #save { width: 100%; background: #8cc63f; border: 0; color: #fff; font-weight: 600; padding: 10px; border-radius: 3px; cursor: pointer; font-size: 14px; margin-top: 8px; }
+    #save { width: 100%; background: var(--gold); color: var(--brown) !important; border: 0; color: #fff; font-weight: 600; padding: 10px; border-radius: 3px; cursor: pointer; font-size: 14px; margin-top: 8px; }
     #save:disabled { background: #c8c8c8; cursor: default; }
     .status { padding: 8px; border-radius: 3px; margin: 8px 0; } .info { background: #eef3f9; } .ok { background: #dff6dd; } .error { background: #fde7e9; }
     .linkbtn { background: none; border: 0; color: #a4262c; text-decoration: underline; cursor: pointer; padding: 0 0 8px; font: inherit; }
@@ -53,13 +53,14 @@
     .places button.on { background: #3e2c1c; color: #fff; border-color: #3e2c1c; }
     .crumbs { font-size: 12px; margin-top: 6px; }
     .crumbs a { cursor: pointer; color: #0f6cbd; }
+    .waitBox { background: #f8f3ea; border: 1px solid #e3d6bd; border-radius: 3px; padding: 2px 6px; margin: 6px 0; }
     .dirRow { display: flex; gap: 6px; width: 100%; text-align: left; border: 0; border-bottom: 1px solid #f2f2f2; background: #fff; padding: 6px 8px; cursor: pointer; font: inherit; }
     .dirRow:hover { background: #f8f4ec; } .dirRow .go { margin-left: auto; color: #999; }
     .pdfOpt { margin-left: auto; font-size: 11px; color: #3e2c1c; display: inline-flex; gap: 3px; align-items: center; white-space: nowrap; }
   </style>
 </head>
 <body>
-  <header><img src="assets/logo.png?v=1794985538269" alt="Aria Lawyers" /><small>Management System</small></header>
+  <header><img src="assets/logo.png?v=1794997346300" alt="Aria Lawyers" /><small>Management System</small></header>
   <main>
     <div id="subject"></div>
     <div id="status" class="status info" hidden></div>
@@ -80,6 +81,7 @@
     <label><input type="checkbox" id="saveAtts" /> Also save attachments to the folder above</label>
 
     <label><input type="checkbox" id="addTime" /> Record time for this email</label>
+    <div id="waitBox" class="waitBox"><label><input type="checkbox" id="waitReply" /> ⏰ Waiting for a reply (e.g. client approval): task + follow-up after <input type="number" id="waitDays" value="3" min="1" style="width:46px;padding:3px" /> days</label></div>
     <div id="timeBox" class="sub" hidden>
       <div class="row"><input id="units" type="number" min="1" value="1" title="Units (6 min each)" /><span class="muted" style="align-self:center">units × 6 min</span></div>
       <input id="timeSubject" type="text" style="margin-top:6px" />
@@ -111,7 +113,7 @@
       <button id="taskBtn" class="small">Create task</button>
     </details>
     <div id="sweep" class="status info" hidden></div>
-    <p class="muted" style="font-size:11px;color:#888">Panel 18 Nov, 5:05 pm · arialawyers.github.io</p>
+    <p class="muted" style="font-size:11px;color:#888">Panel 18 Nov, 8:22 pm · arialawyers.github.io</p>
     <p class="muted"><a id="openApp" target="_blank">Open Aria Lawyers Management System</a></p>
   </main>
   <script>
@@ -120,6 +122,6 @@
     window.addEventListener('unhandledrejection', function (e) { var el = document.getElementById('status'); if (el) { el.hidden = false; el.className = 'status error'; el.textContent = 'Start-up error: ' + ((e.reason && e.reason.message) || e.reason); } });
     setTimeout(function () { var el = document.getElementById('status'); if (el && !window.__ariaStarted) { el.hidden = false; el.className = 'status error'; el.textContent = 'Outlook did not start the panel (Office.onReady did not fire). Close and reopen it.'; } }, 12000);
   </script>
-  <script src="taskpane.js?v=1794985538269"></script>
+  <script src="taskpane.js?v=1794997346300"></script>
 </body>
 </html>
