@@ -11,9 +11,10 @@
     * { box-sizing: border-box; }
     body { margin: 0; font: 13px 'Segoe UI', sans-serif; color: #222; }
     header { background: var(--brown); color: #fff; padding: 8px 12px; }
-    header img { height: 30px; display: block; }
+    header { display: flex; align-items: center; gap: 14px; }
+    header img { height: 34px; display: block; }
     header b { letter-spacing: 1px; } header b span { color: var(--gold); }
-    header small { display: block; margin-top: 2px; font-weight: 600; color: var(--gold); }
+    header small { color: var(--gold); font-size: 13px; font-weight: 400; }
     main { padding: 10px 12px; }
     #subject { font-weight: 600; margin-bottom: 8px; word-break: break-word; }
     input[type=search], input[type=text], input[type=number], select { width: 100%; padding: 7px 8px; border: 1px solid #bbb; border-radius: 3px; font: inherit; }
@@ -60,7 +61,7 @@
   </style>
 </head>
 <body>
-  <header><img src="assets/logo.png?v=1794997346300" alt="Aria Lawyers" /><small>Management System</small></header>
+  <header><img src="assets/logo.png?v=1795001655404" alt="Aria Lawyers" /><small>Management System</small></header>
   <main>
     <div id="subject"></div>
     <div id="status" class="status info" hidden></div>
@@ -113,7 +114,7 @@
       <button id="taskBtn" class="small">Create task</button>
     </details>
     <div id="sweep" class="status info" hidden></div>
-    <p class="muted" style="font-size:11px;color:#888">Panel 18 Nov, 8:22 pm · arialawyers.github.io</p>
+    <p class="muted" style="font-size:11px;color:#888">Panel 18 Nov, 9:34 pm · arialawyers.github.io</p>
     <p class="muted"><a id="openApp" target="_blank">Open Aria Lawyers Management System</a></p>
   </main>
   <script>
@@ -122,6 +123,6 @@
     window.addEventListener('unhandledrejection', function (e) { var el = document.getElementById('status'); if (el) { el.hidden = false; el.className = 'status error'; el.textContent = 'Start-up error: ' + ((e.reason && e.reason.message) || e.reason); } });
     setTimeout(function () { var el = document.getElementById('status'); if (el && !window.__ariaStarted) { el.hidden = false; el.className = 'status error'; el.textContent = 'Outlook did not start the panel (Office.onReady did not fire). Close and reopen it.'; } }, 12000);
   </script>
-  <script src="taskpane.js?v=1794997346300"></script>
+  <script src="taskpane.js?v=1795001655404"></script>
 </body>
 </html>

@@ -5,13 +5,13 @@
            xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides"
            xsi:type="TaskPaneApp">
   <Id>3d8e4b1c-6a2f-4c55-9e0b-5f1a7c2d9b64</Id>
-  <Version>1.1.0.0</Version>
+  <Version>1.2.0.0</Version>
   <ProviderName>Aria Lawyers</ProviderName>
   <DefaultLocale>en-AU</DefaultLocale>
   <DisplayName DefaultValue="Aria Lawyers - Save to matter" />
   <Description DefaultValue="Save Word documents into an Aria Lawyers matter folder." />
-  <IconUrl DefaultValue="https://arialawyers.github.io/aria-outlook-addin/assets/icon-64.png" />
-  <HighResolutionIconUrl DefaultValue="https://arialawyers.github.io/aria-outlook-addin/assets/icon-128.png" />
+  <IconUrl DefaultValue="https://arialawyers.github.io/aria-outlook-addin/assets/brand-64.png" />
+  <HighResolutionIconUrl DefaultValue="https://arialawyers.github.io/aria-outlook-addin/assets/brand-128.png" />
   <SupportUrl DefaultValue="https://www.arialawyers.com.au" />
   <AppDomains>
     <AppDomain>https://login.microsoftonline.com</AppDomain>
@@ -65,9 +65,9 @@
     </Hosts>
     <Resources>
       <bt:Images>
-        <bt:Image id="icon16" DefaultValue="https://arialawyers.github.io/aria-outlook-addin/assets/icon-16.png" />
-        <bt:Image id="icon32" DefaultValue="https://arialawyers.github.io/aria-outlook-addin/assets/icon-32.png" />
-        <bt:Image id="icon80" DefaultValue="https://arialawyers.github.io/aria-outlook-addin/assets/icon-80.png" />
+        <bt:Image id="icon16" DefaultValue="https://arialawyers.github.io/aria-outlook-addin/assets/brand-16.png" />
+        <bt:Image id="icon32" DefaultValue="https://arialawyers.github.io/aria-outlook-addin/assets/brand-32.png" />
+        <bt:Image id="icon80" DefaultValue="https://arialawyers.github.io/aria-outlook-addin/assets/brand-80.png" />
       </bt:Images>
       <bt:Urls>
         <bt:Url id="wordUrl" DefaultValue="https://arialawyers.github.io/aria-outlook-addin/word.html" />
