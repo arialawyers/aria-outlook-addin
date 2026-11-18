@@ -7,19 +7,20 @@
   <title>Aria Lawyers Management System</title>
   <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
   <style>
-    :root { --navy: #3f5168; --gold: #c5a46d; }
+    :root { --navy: #3e2c1c; --gold: #b1976b; --brown: #3e2c1c; }
     * { box-sizing: border-box; }
     body { margin: 0; font: 13px 'Segoe UI', sans-serif; color: #222; }
-    header { background: var(--navy); color: #fff; padding: 10px 12px; }
+    header { background: var(--gold); color: var(--brown); padding: 8px 12px; }
+    header img { height: 30px; display: block; }
     header b { letter-spacing: 1px; } header b span { color: var(--gold); }
-    header small { display: block; opacity: .8; margin-top: 2px; }
+    header small { display: block; margin-top: 2px; font-weight: 600; }
     main { padding: 10px 12px; }
     #subject { font-weight: 600; margin-bottom: 8px; word-break: break-word; }
     input[type=search], input[type=text], input[type=number], select { width: 100%; padding: 7px 8px; border: 1px solid #bbb; border-radius: 3px; font: inherit; }
     #results { max-height: 300px; overflow-y: auto; border: 1px solid #e3e3e3; margin: 6px 0 10px; }
     .group { background: #f3f5f8; color: #555; font-size: 11px; text-transform: uppercase; padding: 4px 8px; }
     .matter { display: flex; gap: 8px; width: 100%; text-align: left; border: 0; border-bottom: 1px solid #f0f0f0; background: #fff; padding: 7px 8px; cursor: pointer; font: inherit; }
-    .matter:hover { background: #f5f8fc; } .matter.sel { background: #dbe8f6; }
+    .matter:hover { background: #f5f8fc; } .matter.sel { background: #efe6d6; }
     .num { background: #f36f21; color: #fff; border-radius: 3px; padding: 0 5px; font-weight: 600; font-size: 12px; height: 18px; }
     .num.lead { background: #165a5a; }
     .t { flex: 1; } .tick { color: #107c10; font-size: 11px; white-space: nowrap; }
@@ -36,21 +37,29 @@
     .ask button.yes { background: #a4262c; color: #fff; border-color: #a4262c; }
     .folders { max-height: 170px; overflow-y: auto; border: 1px solid #ccc; border-radius: 3px; margin-top: 4px; }
     .folder { display: block; width: 100%; text-align: left; border: 0; border-bottom: 1px solid #f2f2f2; background: #fff; padding: 5px 8px; cursor: pointer; font: inherit; }
-    .folder:hover { background: #f5f8fc; } .folder.sel { background: #dbe8f6; font-weight: 600; }
+    .folder:hover { background: #f5f8fc; } .folder.sel { background: #efe6d6; font-weight: 600; }
     details.docbox summary { cursor: pointer; padding: 2px 0; }
     .lbl { display: block; font-size: 12px; color: #555; margin: 6px 0 2px; }
     textarea, select, input[type=date] { width: 100%; box-sizing: border-box; padding: 6px; border: 1px solid #bbb; border-radius: 3px; font: inherit; }
-    button.small { margin-top: 8px; padding: 7px; width: 100%; border: 0; border-radius: 3px; background: #3f5168; color: #fff; font-weight: 600; cursor: pointer; }
+    button.small { margin-top: 8px; padding: 7px; width: 100%; border: 0; border-radius: 3px; background: #3e2c1c; color: #fff; font-weight: 600; cursor: pointer; }
     .fileRow { display: flex; gap: 6px; align-items: flex-start; padding: 4px 8px; border-bottom: 1px solid #f2f2f2; font-size: 13px; }
     .fileRow i { color: #777; font-style: normal; margin-left: auto; white-space: nowrap; }
     .docbox { border: 1px solid #e3e3e3; border-radius: 3px; padding: 8px; margin: 10px 0 4px; }
     .docHead { display: flex; justify-content: space-between; margin-bottom: 6px; }
-    .nf { margin-top: 6px; } .nf button { flex: 0 0 auto; padding: 6px 10px; border: 1px solid #3f5168; background: #3f5168; color: #fff; border-radius: 3px; cursor: pointer; }
+    .nf { margin-top: 6px; } .nf button { flex: 0 0 auto; padding: 6px 10px; border: 1px solid #3e2c1c; background: #3e2c1c; color: #fff; border-radius: 3px; cursor: pointer; }
     .muted { color: #777; font-size: 12px; } a { color: #2b6cb0; }
+  .places { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 6px; }
+    .places button { font-size: 12px; padding: 3px 8px; border: 1px solid #c8c6c4; background: #fff; border-radius: 12px; cursor: pointer; }
+    .places button.on { background: #3e2c1c; color: #fff; border-color: #3e2c1c; }
+    .crumbs { font-size: 12px; margin-top: 6px; }
+    .crumbs a { cursor: pointer; color: #0f6cbd; }
+    .dirRow { display: flex; gap: 6px; width: 100%; text-align: left; border: 0; border-bottom: 1px solid #f2f2f2; background: #fff; padding: 6px 8px; cursor: pointer; font: inherit; }
+    .dirRow:hover { background: #f8f4ec; } .dirRow .go { margin-left: auto; color: #999; }
+    .pdfOpt { margin-left: auto; font-size: 11px; color: #3e2c1c; display: inline-flex; gap: 3px; align-items: center; white-space: nowrap; }
   </style>
 </head>
 <body>
-  <header><b>ARIA <span>LAWYERS</span></b><small>Management System</small></header>
+  <header><img src="assets/logo.png?v=1794985538269" alt="Aria Lawyers" /><small>Management System</small></header>
   <main>
     <div id="subject"></div>
     <div id="status" class="status info" hidden></div>
@@ -80,9 +89,13 @@
     <p id="done" hidden><a id="viewMatter" target="_blank">View matter ›</a></p>
 
     <details id="attachBox" class="docbox" hidden>
-      <summary><b>Attach from matter documents</b></summary>
-      <input id="fileSearch" type="search" placeholder="Search file names" style="margin-top:6px" />
+      <summary><b>Attach from SharePoint documents</b></summary>
+      <div id="places" class="places"></div>
+      <div id="crumbs" class="crumbs"></div>
+      <input id="fileSearch" type="search" placeholder="Filter this folder" style="margin-top:6px" />
       <div id="fileList" class="folders"></div>
+      <div id="pickedNote" class="muted" style="font-size:12px"></div>
+      <div class="muted" style="font-size:11px">Tick <b>PDF</b> next to a Word, Excel or PowerPoint file to attach it as a PDF.</div>
       <button id="attachBtn" class="small">Attach to this email</button>
     </details>
 
@@ -98,7 +111,7 @@
       <button id="taskBtn" class="small">Create task</button>
     </details>
     <div id="sweep" class="status info" hidden></div>
-    <p class="muted" style="font-size:11px;color:#888">Panel 17 Nov, 8:01 pm · arialawyers.github.io</p>
+    <p class="muted" style="font-size:11px;color:#888">Panel 18 Nov, 5:05 pm · arialawyers.github.io</p>
     <p class="muted"><a id="openApp" target="_blank">Open Aria Lawyers Management System</a></p>
   </main>
   <script>
@@ -107,6 +120,6 @@
     window.addEventListener('unhandledrejection', function (e) { var el = document.getElementById('status'); if (el) { el.hidden = false; el.className = 'status error'; el.textContent = 'Start-up error: ' + ((e.reason && e.reason.message) || e.reason); } });
     setTimeout(function () { var el = document.getElementById('status'); if (el && !window.__ariaStarted) { el.hidden = false; el.className = 'status error'; el.textContent = 'Outlook did not start the panel (Office.onReady did not fire). Close and reopen it.'; } }, 12000);
   </script>
-  <script src="taskpane.js?v=1794909662460"></script>
+  <script src="taskpane.js?v=1794985538269"></script>
 </body>
 </html>

@@ -7,10 +7,10 @@
   <title>Aria Lawyers - Save to matter</title>
   <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
   <style>
-    :root { --navy: #3f5168; --gold: #c5a46d; }
+    :root { --navy: #3e2c1c; --gold: #b1976b; }
     * { box-sizing: border-box; }
     body { margin: 0; font: 13px 'Segoe UI', sans-serif; color: #222; }
-    header { background: var(--navy); color: #fff; padding: 10px 12px; }
+    header { background: var(--gold); color: var(--brown, #3e2c1c); padding: 10px 12px; }
     header b { letter-spacing: 1px; } header b span { color: var(--gold); }
     header small { display: block; opacity: .8; margin-top: 2px; }
     main { padding: 10px 12px; }
@@ -39,14 +39,14 @@
     .folder:hover { background: #f5f8fc; } .folder.sel { background: #dbe8f6; font-weight: 600; }
     .docbox { border: 1px solid #e3e3e3; border-radius: 3px; padding: 8px; margin: 10px 0 4px; }
     .docHead { display: flex; justify-content: space-between; margin-bottom: 6px; }
-    .nf { margin-top: 6px; } .nf button { flex: 0 0 auto; padding: 6px 10px; border: 1px solid #3f5168; background: #3f5168; color: #fff; border-radius: 3px; cursor: pointer; }
+    .nf { margin-top: 6px; } .nf button { flex: 0 0 auto; padding: 6px 10px; border: 1px solid #3e2c1c; background: #3e2c1c; color: #fff; border-radius: 3px; cursor: pointer; }
     .muted { color: #777; font-size: 12px; } a { color: #2b6cb0; }
   
     .done a { display: block; margin: 6px 0; }
   </style>
 </head>
 <body>
-  <header><b>ARIA <span>LAWYERS</span></b><small>Save document to matter</small></header>
+  <header><img src="assets/logo.png?v=1794985538269" alt="Aria Lawyers" style="height:30px;display:block" /><small>Save document to matter</small></header>
   <main>
     <div id="status" class="status info" hidden></div>
     <label style="display:block">File name</label>
@@ -70,8 +70,8 @@
       <a id="openWeb" target="_blank">Open it in the browser ›</a>
       <a id="openFolder" target="_blank">Open the matter's documents folder ›</a>
     </div>
-    <p class="muted" style="font-size:11px;color:#888">Panel 17 Nov, 8:01 pm · arialawyers.github.io</p>
+    <p class="muted" style="font-size:11px;color:#888">Panel 18 Nov, 5:05 pm · arialawyers.github.io</p>
   </main>
-  <script src="word.js?v=1794909662460"></script>
+  <script src="word.js?v=1794985538269"></script>
 </body>
 </html>

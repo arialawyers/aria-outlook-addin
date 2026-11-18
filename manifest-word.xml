@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+           xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides"
+           xsi:type="TaskPaneApp">
+  <Id>3d8e4b1c-6a2f-4c55-9e0b-5f1a7c2d9b64</Id>
+  <Version>1.1.0.0</Version>
+  <ProviderName>Aria Lawyers</ProviderName>
+  <DefaultLocale>en-AU</DefaultLocale>
+  <DisplayName DefaultValue="Aria Lawyers - Save to matter" />
+  <Description DefaultValue="Save Word documents into an Aria Lawyers matter folder." />
+  <IconUrl DefaultValue="https://arialawyers.github.io/aria-outlook-addin/assets/icon-64.png" />
+  <HighResolutionIconUrl DefaultValue="https://arialawyers.github.io/aria-outlook-addin/assets/icon-128.png" />
+  <SupportUrl DefaultValue="https://www.arialawyers.com.au" />
+  <AppDomains>
+    <AppDomain>https://login.microsoftonline.com</AppDomain>
+    <AppDomain>https://arialawyers21.sharepoint.com</AppDomain>
+    <AppDomain>https://arialawyers.github.io</AppDomain>
+  </AppDomains>
+  <Hosts><Host Name="Document" /></Hosts>
+  <DefaultSettings>
+    <SourceLocation DefaultValue="https://arialawyers.github.io/aria-outlook-addin/word.html" />
+  </DefaultSettings>
+  <Permissions>ReadWriteDocument</Permissions>
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
+    <Hosts>
+      <Host xsi:type="Document">
+        <DesktopFormFactor>
+          <GetStarted>
+            <Title resid="groupLabel" />
+            <Description resid="buttonTip" />
+            <LearnMoreUrl resid="wordUrl" />
+          </GetStarted>
+          <ExtensionPoint xsi:type="PrimaryCommandSurface">
+            <OfficeTab id="TabHome">
+              <Group id="aria.wordGroup">
+                <Label resid="groupLabel" />
+                <Icon>
+                  <bt:Image size="16" resid="icon16" />
+                  <bt:Image size="32" resid="icon32" />
+                  <bt:Image size="80" resid="icon80" />
+                </Icon>
+                <Control xsi:type="Button" id="aria.wordSave">
+                  <Label resid="buttonLabel" />
+                  <Supertip>
+                    <Title resid="buttonLabel" />
+                    <Description resid="buttonTip" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="icon16" />
+                    <bt:Image size="32" resid="icon32" />
+                    <bt:Image size="80" resid="icon80" />
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <TaskpaneId>AriaWordSave</TaskpaneId>
+                    <SourceLocation resid="wordUrl" />
+                  </Action>
+                </Control>
+              </Group>
+            </OfficeTab>
+          </ExtensionPoint>
+        </DesktopFormFactor>
+      </Host>
+    </Hosts>
+    <Resources>
+      <bt:Images>
+        <bt:Image id="icon16" DefaultValue="https://arialawyers.github.io/aria-outlook-addin/assets/icon-16.png" />
+        <bt:Image id="icon32" DefaultValue="https://arialawyers.github.io/aria-outlook-addin/assets/icon-32.png" />
+        <bt:Image id="icon80" DefaultValue="https://arialawyers.github.io/aria-outlook-addin/assets/icon-80.png" />
+      </bt:Images>
+      <bt:Urls>
+        <bt:Url id="wordUrl" DefaultValue="https://arialawyers.github.io/aria-outlook-addin/word.html" />
+      </bt:Urls>
+      <bt:ShortStrings>
+        <bt:String id="groupLabel" DefaultValue="Aria Lawyers" />
+        <bt:String id="buttonLabel" DefaultValue="Save to matter" />
+      </bt:ShortStrings>
+      <bt:LongStrings>
+        <bt:String id="buttonTip" DefaultValue="Save this document into a folder of an Aria Lawyers matter." />
+      </bt:LongStrings>
+    </Resources>
+  </VersionOverrides>
+</OfficeApp>
