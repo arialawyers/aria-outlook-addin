@@ -15,7 +15,7 @@
     },
     "siteUrl": {
       "type": "string",
-      "defaultValue": "https://arialawyers21.sharepoint.com/sites/Disclosure"
+      "defaultValue": "https://arialawyers21.sharepoint.com/sites/AriaManagement"
     }
   },
   "variables": {
@@ -54,7 +54,7 @@
             },
             "siteUrl": {
               "type": "String",
-              "defaultValue": "https://arialawyers21.sharepoint.com/sites/Disclosure"
+              "defaultValue": "https://arialawyers21.sharepoint.com/sites/AriaManagement"
             }
           },
           "triggers": {
