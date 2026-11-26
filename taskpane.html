@@ -61,7 +61,7 @@
   </style>
 </head>
 <body>
-  <header><img src="assets/logo.png?v=1795638361944" alt="Aria Lawyers" /><small>Management System</small></header>
+  <header><img src="assets/logo.png?v=1795664560076" alt="Aria Lawyers" /><small>Management System</small></header>
   <main>
     <div id="subject"></div>
     <div id="status" class="status info" hidden></div>
@@ -79,11 +79,11 @@
       <div class="row nf"><input id="newFolder" type="text" placeholder="New folder name (created inside the folder above)" /><button id="addFolder">Create</button></div>
     </div>
 
-    <label><input type="checkbox" id="saveAtts" /> Also save attachments to the folder above</label>
+    <label><input type="checkbox" id="saveAtts" checked /> Also save attachments to the folder above</label>
 
-    <label><input type="checkbox" id="addTime" /> Record time for this email</label>
+    <label><input type="checkbox" id="addTime" checked /> Record time for this email</label>
     <div id="waitBox" class="waitBox"><label><input type="checkbox" id="waitReply" /> ⏰ Waiting for a reply (e.g. client approval): task + follow-up after <input type="number" id="waitDays" value="3" min="1" style="width:46px;padding:3px" /> days</label></div>
-    <div id="timeBox" class="sub" hidden>
+    <div id="timeBox" class="sub">
       <div class="row"><input id="units" type="number" min="1" value="1" title="Units (6 min each)" /><span class="muted" style="align-self:center">units × 6 min</span></div>
       <input id="timeSubject" type="text" style="margin-top:6px" />
     </div>
@@ -114,7 +114,7 @@
       <button id="taskBtn" class="small">Create task</button>
     </details>
     <div id="sweep" class="status info" hidden></div>
-    <p class="muted" style="font-size:11px;color:#888">Panel 26 Nov, 6:26 am · arialawyers.github.io</p>
+    <p class="muted" style="font-size:11px;color:#888">Panel 26 Nov, 1:42 pm · arialawyers.github.io</p>
     <p class="muted"><a id="openApp" target="_blank">Open Aria Lawyers Management System</a></p>
   </main>
   <script>
@@ -123,6 +123,6 @@
     window.addEventListener('unhandledrejection', function (e) { var el = document.getElementById('status'); if (el) { el.hidden = false; el.className = 'status error'; el.textContent = 'Start-up error: ' + ((e.reason && e.reason.message) || e.reason); } });
     setTimeout(function () { var el = document.getElementById('status'); if (el && !window.__ariaStarted) { el.hidden = false; el.className = 'status error'; el.textContent = 'Outlook did not start the panel (Office.onReady did not fire). Close and reopen it.'; } }, 12000);
   </script>
-  <script src="taskpane.js?v=1795638361944"></script>
+  <script src="taskpane.js?v=1795664560076"></script>
 </body>
 </html>
