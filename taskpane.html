@@ -39,6 +39,11 @@
     .folders { max-height: 170px; overflow-y: auto; border: 1px solid #ccc; border-radius: 3px; margin-top: 4px; }
     .folder { display: block; width: 100%; text-align: left; border: 0; border-bottom: 1px solid #f2f2f2; background: #fff; padding: 5px 8px; cursor: pointer; font: inherit; }
     .folder:hover { background: #f5f8fc; } .folder.sel { background: #efe6d6; font-weight: 600; }
+    .attlist { margin: 6px 0; border: 1px solid #e1dfdd; border-radius: 4px; }
+    .att { display: flex; gap: 6px; align-items: center; padding: 5px 8px; border-bottom: 1px solid #f2f2f2; cursor: pointer; }
+    .att:hover { background: #f5f8fc; } .att.sel { background: #efe6d6; font-weight: 600; }
+    .att .attName { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .att .attFolder { color: #605e5c; font-size: 12px; white-space: nowrap; }
     details.docbox summary { cursor: pointer; padding: 2px 0; }
     .lbl { display: block; font-size: 12px; color: #555; margin: 6px 0 2px; }
     textarea, select, input[type=date] { width: 100%; box-sizing: border-box; padding: 6px; border: 1px solid #bbb; border-radius: 3px; font: inherit; }
@@ -61,7 +66,7 @@
   </style>
 </head>
 <body>
-  <header><img src="assets/logo.png?v=1795664560076" alt="Aria Lawyers" /><small>Management System</small></header>
+  <header><img src="assets/logo.png?v=1795777149924" alt="Aria Lawyers" /><small>Management System</small></header>
   <main>
     <div id="subject"></div>
     <div id="status" class="status info" hidden></div>
@@ -74,12 +79,13 @@
 
     <div id="docBox" class="docbox">
       <div class="docHead"><b>Matter documents folder</b> <a id="openDocs" hidden target="_blank">Open folder ›</a></div>
+      <div id="attList" class="attlist" hidden></div>
       <div class="muted">Chosen: <b id="folderPicked"></b></div>
       <div id="attFolder" class="folders"></div>
       <div class="row nf"><input id="newFolder" type="text" placeholder="New folder name (created inside the folder above)" /><button id="addFolder">Create</button></div>
     </div>
 
-    <label><input type="checkbox" id="saveAtts" checked /> Also save attachments to the folder above</label>
+    <label><input type="checkbox" id="saveAtts" checked /> Also save attachments (to the folders chosen above)</label>
 
     <label><input type="checkbox" id="addTime" checked /> Record time for this email</label>
     <div id="waitBox" class="waitBox"><label><input type="checkbox" id="waitReply" /> ⏰ Waiting for a reply (e.g. client approval): task + follow-up after <input type="number" id="waitDays" value="3" min="1" style="width:46px;padding:3px" /> days</label></div>
@@ -114,7 +120,7 @@
       <button id="taskBtn" class="small">Create task</button>
     </details>
     <div id="sweep" class="status info" hidden></div>
-    <p class="muted" style="font-size:11px;color:#888">Panel 26 Nov, 1:42 pm · arialawyers.github.io</p>
+    <p class="muted" style="font-size:11px;color:#888">Panel 27 Nov, 8:59 pm · arialawyers.github.io</p>
     <p class="muted"><a id="openApp" target="_blank">Open Aria Lawyers Management System</a></p>
   </main>
   <script>
@@ -123,6 +129,6 @@
     window.addEventListener('unhandledrejection', function (e) { var el = document.getElementById('status'); if (el) { el.hidden = false; el.className = 'status error'; el.textContent = 'Start-up error: ' + ((e.reason && e.reason.message) || e.reason); } });
     setTimeout(function () { var el = document.getElementById('status'); if (el && !window.__ariaStarted) { el.hidden = false; el.className = 'status error'; el.textContent = 'Outlook did not start the panel (Office.onReady did not fire). Close and reopen it.'; } }, 12000);
   </script>
-  <script src="taskpane.js?v=1795664560076"></script>
+  <script src="taskpane.js?v=1795777149924"></script>
 </body>
 </html>
