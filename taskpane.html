@@ -44,6 +44,7 @@
     .att:hover { background: #f5f8fc; } .att.sel { background: #efe6d6; font-weight: 600; }
     .att .attName { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
     .att .attFolder { color: #605e5c; font-size: 12px; white-space: nowrap; }
+    .att .attSkip { font-size: 11px; color: #8a6d3b; } .att.skip .attName { text-decoration: line-through; color: #a19f9d; }
     details.docbox summary { cursor: pointer; padding: 2px 0; }
     .lbl { display: block; font-size: 12px; color: #555; margin: 6px 0 2px; }
     textarea, select, input[type=date] { width: 100%; box-sizing: border-box; padding: 6px; border: 1px solid #bbb; border-radius: 3px; font: inherit; }
@@ -66,7 +67,7 @@
   </style>
 </head>
 <body>
-  <header><img src="assets/logo.png?v=1795777149924" alt="Aria Lawyers" /><small>Management System</small></header>
+  <header><img src="assets/logo.png?v=1795825536738" alt="Aria Lawyers" /><small>Management System</small></header>
   <main>
     <div id="subject"></div>
     <div id="status" class="status info" hidden></div>
@@ -120,7 +121,7 @@
       <button id="taskBtn" class="small">Create task</button>
     </details>
     <div id="sweep" class="status info" hidden></div>
-    <p class="muted" style="font-size:11px;color:#888">Panel 27 Nov, 8:59 pm · arialawyers.github.io</p>
+    <p class="muted" style="font-size:11px;color:#888">Panel 28 Nov, 10:25 am · arialawyers.github.io</p>
     <p class="muted"><a id="openApp" target="_blank">Open Aria Lawyers Management System</a></p>
   </main>
   <script>
@@ -129,6 +130,6 @@
     window.addEventListener('unhandledrejection', function (e) { var el = document.getElementById('status'); if (el) { el.hidden = false; el.className = 'status error'; el.textContent = 'Start-up error: ' + ((e.reason && e.reason.message) || e.reason); } });
     setTimeout(function () { var el = document.getElementById('status'); if (el && !window.__ariaStarted) { el.hidden = false; el.className = 'status error'; el.textContent = 'Outlook did not start the panel (Office.onReady did not fire). Close and reopen it.'; } }, 12000);
   </script>
-  <script src="taskpane.js?v=1795777149924"></script>
+  <script src="taskpane.js?v=1795825536738"></script>
 </body>
 </html>
