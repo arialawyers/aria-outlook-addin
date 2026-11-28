@@ -51,6 +51,8 @@
     button.small { margin-top: 8px; padding: 7px; width: 100%; border: 0; border-radius: 3px; background: #3e2c1c; color: #fff; font-weight: 600; cursor: pointer; }
     .fileRow { display: flex; gap: 6px; align-items: flex-start; padding: 4px 8px; border-bottom: 1px solid #f2f2f2; font-size: 13px; }
     .fileRow i { color: #777; font-style: normal; margin-left: auto; white-space: nowrap; }
+    .whoList { max-height: 150px; overflow: auto; border: 1px solid #e1dfdd; border-radius: 3px; padding: 4px 6px; }
+    .whoList label { display: block; padding: 2px 0; }
     .docbox { border: 1px solid #e3e3e3; border-radius: 3px; padding: 8px; margin: 10px 0 4px; }
     .docHead { display: flex; justify-content: space-between; margin-bottom: 6px; }
     .nf { margin-top: 6px; } .nf button { flex: 0 0 auto; padding: 6px 10px; border: 1px solid #3e2c1c; background: #3e2c1c; color: #fff; border-radius: 3px; cursor: pointer; }
@@ -67,7 +69,7 @@
   </style>
 </head>
 <body>
-  <header><img src="assets/logo.png?v=1795865573756" alt="Aria Lawyers" /><small>Management System</small></header>
+  <header><img src="assets/logo.png?v=1795893282246" alt="Aria Lawyers" /><small>Management System</small></header>
   <main>
     <div id="subject"></div>
     <div id="status" class="status info" hidden></div>
@@ -112,16 +114,17 @@
     <details id="taskBox" class="docbox">
       <summary><b>New task for this matter</b></summary>
       <label class="lbl">Task</label><input id="taskTitle" type="text" />
-      <label class="lbl">Assign to</label><select id="taskWho"></select>
+      <label class="lbl">Assign to (tick one or more)</label><div id="taskWho" class="whoList"></div>
       <div class="row">
         <div><label class="lbl">Due date</label><input id="taskDue" type="date" /></div>
         <div><label class="lbl">Priority</label><select id="taskPriority"><option>No Priority</option><option>Low</option><option selected>Medium</option><option>High</option></select></div>
       </div>
       <label class="lbl">Details</label><textarea id="taskDetails" rows="3"></textarea>
+      <label class="chk" id="taskLinkRow"><input type="checkbox" id="taskLinkEmail" checked /> Attach this email to the task</label>
       <button id="taskBtn" class="small">Create task</button>
     </details>
     <div id="sweep" class="status info" hidden></div>
-    <p class="muted" style="font-size:11px;color:#888">Panel 28 Nov, 9:32 pm · arialawyers.github.io</p>
+    <p class="muted" style="font-size:11px;color:#888">Panel 29 Nov, 5:14 am · arialawyers.github.io</p>
     <p class="muted"><a id="openApp" target="_blank">Open Aria Lawyers Management System</a></p>
   </main>
   <script>
@@ -130,6 +133,6 @@
     window.addEventListener('unhandledrejection', function (e) { var el = document.getElementById('status'); if (el) { el.hidden = false; el.className = 'status error'; el.textContent = 'Start-up error: ' + ((e.reason && e.reason.message) || e.reason); } });
     setTimeout(function () { var el = document.getElementById('status'); if (el && !window.__ariaStarted) { el.hidden = false; el.className = 'status error'; el.textContent = 'Outlook did not start the panel (Office.onReady did not fire). Close and reopen it.'; } }, 12000);
   </script>
-  <script src="taskpane.js?v=1795865573756"></script>
+  <script src="taskpane.js?v=1795893282246"></script>
 </body>
 </html>
