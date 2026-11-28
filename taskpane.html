@@ -67,7 +67,7 @@
   </style>
 </head>
 <body>
-  <header><img src="assets/logo.png?v=1795825536738" alt="Aria Lawyers" /><small>Management System</small></header>
+  <header><img src="assets/logo.png?v=1795865573756" alt="Aria Lawyers" /><small>Management System</small></header>
   <main>
     <div id="subject"></div>
     <div id="status" class="status info" hidden></div>
@@ -121,7 +121,7 @@
       <button id="taskBtn" class="small">Create task</button>
     </details>
     <div id="sweep" class="status info" hidden></div>
-    <p class="muted" style="font-size:11px;color:#888">Panel 28 Nov, 10:25 am · arialawyers.github.io</p>
+    <p class="muted" style="font-size:11px;color:#888">Panel 28 Nov, 9:32 pm · arialawyers.github.io</p>
     <p class="muted"><a id="openApp" target="_blank">Open Aria Lawyers Management System</a></p>
   </main>
   <script>
@@ -130,6 +130,6 @@
     window.addEventListener('unhandledrejection', function (e) { var el = document.getElementById('status'); if (el) { el.hidden = false; el.className = 'status error'; el.textContent = 'Start-up error: ' + ((e.reason && e.reason.message) || e.reason); } });
     setTimeout(function () { var el = document.getElementById('status'); if (el && !window.__ariaStarted) { el.hidden = false; el.className = 'status error'; el.textContent = 'Outlook did not start the panel (Office.onReady did not fire). Close and reopen it.'; } }, 12000);
   </script>
-  <script src="taskpane.js?v=1795825536738"></script>
+  <script src="taskpane.js?v=1795865573756"></script>
 </body>
 </html>
